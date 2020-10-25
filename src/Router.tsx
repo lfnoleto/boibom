@@ -5,6 +5,8 @@ import {createStackNavigator} from '@react-navigation/stack'
 import Onboarding from './screens/Onboarding/index';
 import Login from './screens/Login/index';
 import AsyncStorege from '@react-native-community/async-storage'
+import { Node } from 'react-native-reanimated';
+import Cadastrar from '../src/screens/Cadastro/index'
 const Stack = createStackNavigator()
 
 export default function app(){
@@ -31,15 +33,17 @@ export default function app(){
 		return null
 	}else if(inFirstLouch===true){
 		return(
-			<NavigationContainer>
-				<Stack.Navigator initialRouteName='Onboarding'>
+			<NavigationContainer >
+				<Stack.Navigator initialRouteName='Onboarding' headerMode='none' >
 					<Stack.Screen  name = 'Onboarding' component={Onboarding}/> 
 					<Stack.Screen name = 'Login' component={Login}/>
+					<Stack.Screen name = 'Signer' component={Cadastrar}/>
+
 				</Stack.Navigator>
     		</NavigationContainer>
 
 		)
 	}else{
-		return (<Login/>)
+		return (<Cadastrar/>)
 	}
 }
