@@ -1,14 +1,26 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet, Switch, Text, TextInput, TouchableOpacity,StatusBar} from 'react-native';
 //import { Feather } from '@expo/vector-icons';
+import Feather from 'react-native-vector-icons/Feather'
 import { RectButton } from 'react-native-gesture-handler';
 import styles from './styles'
-import { RadioButton ,Checkbox} from 'react-native-paper';
+import ImagePicker from 'react-native-image-picker';
+import { Checkbox} from 'react-native-paper';
+
+interface handlerCreateImages{
+    data:string
+}
+
 
 export default function OrphanageData() {
     const [checkedCompra, setCheckedCompra] = React.useState(false);
     const [checkedRegria, setCheckedRegria] = React.useState(false);
+    const [images,setImages] = React.useState<string[]>([])
 
+
+ 
+
+  
 
   return (
 
@@ -39,8 +51,8 @@ export default function OrphanageData() {
             />
 
             <Text style={styles.label}>Fotos</Text>
-            <TouchableOpacity style={styles.imagesInput} onPress={() => {}}>
-                {/*<Feather name="plus" size={24} color="#15B6D6"*/}
+            <TouchableOpacity style={styles.imagesInput} onPress={() => ImagePicker.showImagesPicker({},handlerCreateImages())}>
+                <Feather name="plus" size={24} color="#15B6D6"/>
             </TouchableOpacity>
 
             <RectButton style={styles.nextButton} onPress={() => {}}>
